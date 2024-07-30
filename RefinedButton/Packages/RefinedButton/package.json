@@ -1,0 +1,12 @@
+{
+    "name": "jp.pupriff.refinedbutton",
+    "displayName": "Riffined Button",
+    "author": { "name": "PupRiff", "url": "https://github.com/PupRiff/" },
+    "version": "0.0.1",
+    "unity": "2021.3",
+    "description": "Refined Button is a simple UI button that can be used to trigger events in a reactive way.",
+    "keywords": [ "button", "ui", "event", "refined", "Scripting" ],
+    "license": "MIT",
+    "category": "Scripting",
+    "dependencies": {}
+}
