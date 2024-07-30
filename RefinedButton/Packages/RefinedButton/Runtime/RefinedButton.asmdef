@@ -1,0 +1,36 @@
+{
+    "name": "RefinedButton",
+    "rootNamespace": "RefinedButton",
+    "references": [
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [
+        "R3.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.cysharp.r3",
+            "expression": "",
+            "define": "REFINEDBUTTON_SUPPORT_R3"
+        },
+        {
+            "name": "com.neuecc.unirx",
+            "expression": "",
+            "define": "REFINEDBUTTON_SUPPORT_UNIRX"
+        },
+        {
+            "name": "com.cysharp.unitask",
+            "expression": "",
+            "define": "REFINEDBUTTON_SUPPORT_UNITASK"
+        }
+    ],
+    "noEngineReferences": false
+}
