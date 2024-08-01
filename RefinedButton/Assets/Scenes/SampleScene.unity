@@ -196,7 +196,6 @@ GameObject:
   - component: {fileID: 233443265}
   - component: {fileID: 233443264}
   - component: {fileID: 233443263}
-  - component: {fileID: 233443266}
   m_Layer: 5
   m_Name: UnityButton
   m_TagString: Untagged
@@ -306,18 +305,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233443261}
   m_CullTransparentMesh: 1
---- !u!114 &233443266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233443261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b08233154848c6b03b5e0628ebf2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &354246930
 GameObject:
   m_ObjectHideFlags: 0
