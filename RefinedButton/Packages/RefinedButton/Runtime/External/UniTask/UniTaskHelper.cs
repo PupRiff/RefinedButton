@@ -7,17 +7,19 @@ namespace RefinedButton
 {
 	internal static class UniTaskHelper
 	{
-		public static async UniTask WaitUntilEventAsync(Action<Action> addHandler, Action<Action> removeHandler, CancellationToken cancellationToken = default)
+		public static async UniTask WaitUntilEventAsync(Action<Action> addHandler, Action<Action> removeHandler,
+			CancellationToken cancellationToken = default)
 		{
 			cancellationToken.ThrowIfCancellationRequested();
-			
+
 			var completionSource = new UniTaskCompletionSource();
 
 			try
 			{
 				addHandler(Handler);
 
-				await using (cancellationToken.RegisterWithoutCaptureExecutionContext(cts => ((UniTaskCompletionSource)cts).TrySetCanceled(), completionSource))
+				await using (cancellationToken.RegisterWithoutCaptureExecutionContext(cs => ((UniTaskCompletionSource)cs).TrySetCanceled(),
+					             completionSource))
 				{
 					await completionSource.Task;
 				}
