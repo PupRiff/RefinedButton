@@ -11,9 +11,10 @@ namespace RefinedButton
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <returns>An observable that emits when the pressable is pressed.</returns>
-		public static IObservable<Unit> OnPressAsObservable(this IRefinedPressable pressable)
+		public static IObservable<Unit> OnPressAsObservable(this IPressable pressable)
 		{
-			return Observable.FromEvent(h => pressable.Pressed += h, h => pressable.Pressed -= h);
+			var cancelToken = pressable.DestroyCancellationToken;
+			return UniRxHelper.FromEventWithCancellation(h => pressable.Pressed += h, h => pressable.Pressed -= h, cancelToken);
 		}
 
 		/// <summary>
@@ -21,9 +22,10 @@ namespace RefinedButton
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <returns>An observable that emits when the pressable is released.</returns>
-		public static IObservable<Unit> OnReleaseAsObservable(this IRefinedPressable pressable)
+		public static IObservable<Unit> OnReleaseAsObservable(this IPressable pressable)
 		{
-			return Observable.FromEvent(h => pressable.Released += h, h => pressable.Released -= h);
+			var cancelToken = pressable.DestroyCancellationToken;
+			return UniRxHelper.FromEventWithCancellation(h => pressable.Released += h, h => pressable.Released -= h, cancelToken);
 		}
 
 		/// <summary>
@@ -31,9 +33,10 @@ namespace RefinedButton
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <returns>An observable that emits when the pressable is clicked.</returns>
-		public static IObservable<Unit> OnClickAsObservable(this IRefinedPressable pressable)
+		public static IObservable<Unit> OnClickAsObservable(this IPressable pressable)
 		{
-			return Observable.FromEvent(h => pressable.Clicked += h, h => pressable.Clicked -= h);
+			var cancelToken = pressable.DestroyCancellationToken;
+			return UniRxHelper.FromEventWithCancellation(h => pressable.Clicked += h, h => pressable.Clicked -= h, cancelToken);
 		}
 
 		/// <summary>
@@ -41,9 +44,10 @@ namespace RefinedButton
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <returns>An observable that emits when the pressable gains focus.</returns>
-		public static IObservable<Unit> OnFocusAsObservable(this IRefinedPressable pressable)
+		public static IObservable<Unit> OnFocusAsObservable(this IPressable pressable)
 		{
-			return Observable.FromEvent(h => pressable.Focused += h, h => pressable.Focused -= h);
+			var cancelToken = pressable.DestroyCancellationToken;
+			return UniRxHelper.FromEventWithCancellation(h => pressable.Focused += h, h => pressable.Focused -= h, cancelToken);
 		}
 
 		/// <summary>
@@ -51,9 +55,10 @@ namespace RefinedButton
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <returns>An observable that emits when the pressable loses focus.</returns>
-		public static IObservable<Unit> OnUnfocusAsObservable(this IRefinedPressable pressable)
+		public static IObservable<Unit> OnUnfocusAsObservable(this IPressable pressable)
 		{
-			return Observable.FromEvent(h => pressable.Unfocused += h, h => pressable.Unfocused -= h);
+			var cancelToken = pressable.DestroyCancellationToken;
+			return UniRxHelper.FromEventWithCancellation(h => pressable.Unfocused += h, h => pressable.Unfocused -= h, cancelToken);
 		}
 	}
 }

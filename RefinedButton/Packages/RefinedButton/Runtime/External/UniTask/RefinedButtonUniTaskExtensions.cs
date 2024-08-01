@@ -11,49 +11,54 @@ namespace RefinedButton
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		public static UniTask WaitUntilPressedAsync(this IRefinedPressable pressable, CancellationToken cancellationToken = default)
+		public static UniTask WaitUntilPressedAsync(this IPressable pressable, CancellationToken cancellationToken = default)
 		{
-			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Pressed += h, h => pressable.Pressed -= h, cancellationToken);
+			using var cts = CancellationTokenSource.CreateLinkedTokenSource(pressable.DestroyCancellationToken, cancellationToken);
+			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Pressed += h, h => pressable.Pressed -= h, cts.Token);
 		}
-		
+
 		/// <summary>
 		/// Waits until the pressable is released.
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		public static UniTask WaitUntilReleasedAsync(this IRefinedPressable pressable, CancellationToken cancellationToken = default)
+		public static UniTask WaitUntilReleasedAsync(this IPressable pressable, CancellationToken cancellationToken = default)
 		{
-			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Released += h, h => pressable.Released -= h, cancellationToken);
+			using var cts = CancellationTokenSource.CreateLinkedTokenSource(pressable.DestroyCancellationToken, cancellationToken);
+			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Released += h, h => pressable.Released -= h, cts.Token);
 		}
-		
+
 		/// <summary>
 		/// Waits until the pressable is clicked.
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		public static UniTask WaitUntilClickedAsync(this IRefinedPressable pressable, CancellationToken cancellationToken = default)
+		public static UniTask WaitUntilClickedAsync(this IPressable pressable, CancellationToken cancellationToken = default)
 		{
-			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Clicked += h, h => pressable.Clicked -= h, cancellationToken);
+			using var cts = CancellationTokenSource.CreateLinkedTokenSource(pressable.DestroyCancellationToken, cancellationToken);
+			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Clicked += h, h => pressable.Clicked -= h, cts.Token);
 		}
-		
+
 		/// <summary>
 		/// Waits until the pressable gains focus.
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		public static UniTask WaitUntilFocusedAsync(this IRefinedPressable pressable, CancellationToken cancellationToken = default)
+		public static UniTask WaitUntilFocusedAsync(this IPressable pressable, CancellationToken cancellationToken = default)
 		{
-			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Focused += h, h => pressable.Focused -= h, cancellationToken);
+			using var cts = CancellationTokenSource.CreateLinkedTokenSource(pressable.DestroyCancellationToken, cancellationToken);
+			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Focused += h, h => pressable.Focused -= h, cts.Token);
 		}
-		
+
 		/// <summary>
 		/// Waits until the pressable loses focus.
 		/// </summary>
 		/// <param name="pressable">The pressable object.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		public static UniTask WaitUntilUnfocusedAsync(this IRefinedPressable pressable, CancellationToken cancellationToken = default)
+		public static UniTask WaitUntilUnfocusedAsync(this IPressable pressable, CancellationToken cancellationToken = default)
 		{
-			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Unfocused += h, h => pressable.Unfocused -= h, cancellationToken);
+			using var cts = CancellationTokenSource.CreateLinkedTokenSource(pressable.DestroyCancellationToken, cancellationToken);
+			return UniTaskHelper.WaitUntilEventAsync(h => pressable.Unfocused += h, h => pressable.Unfocused -= h, cts.Token);
 		}
 	}
 }
